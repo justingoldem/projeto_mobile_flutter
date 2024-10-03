@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_mobile_flutter/menu.page.dart';
 
+void main() {
+  runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
+  )
+);
+}
+
 class LoginPage extends StatefulWidget {
   @override
   _LoginPageState createState() => _LoginPageState();

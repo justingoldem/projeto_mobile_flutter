@@ -8,11 +8,14 @@ void main() {
   runApp(MenuPage());
 }
 
+
+
 class MenuPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: MenuScreen(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -47,7 +50,7 @@ class MenuScreen extends StatelessWidget {
             ElevatedButton(
               onPressed: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => adicionaProduto()));
+                    MaterialPageRoute(builder: (context) => Adicionaproduto()));
               },
               child: Text(
                 'Adicionar Produto',
