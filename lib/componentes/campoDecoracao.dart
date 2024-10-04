@@ -11,10 +11,10 @@ InputDecoration getInputdecoration(String label) {
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(64),
-        borderSide: BorderSide(color: Colors.black, width: 3 )
+        borderSide: BorderSide(color: Colors.black, width: 1 )
       ),
       focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(64),
-      borderSide:  BorderSide(color: Colors.black, width: 2)
+      borderSide:  BorderSide(color: Colors.green, width: 4)
       ),
   );
 }

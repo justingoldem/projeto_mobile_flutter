@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:projeto_mobile_flutter/adicionaProduto.page.dart';
 import 'package:projeto_mobile_flutter/consultaProduto.page.dart';
 import 'package:projeto_mobile_flutter/login.page.dart';
@@ -39,9 +40,10 @@ class MenuScreen extends StatelessWidget {
             ),
             Text(
               'Menu',
-              style: TextStyle(
+              style: GoogleFonts.playfairDisplay(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
+                color: Colors.black,
               ),
             ),
             SizedBox(
@@ -50,7 +52,7 @@ class MenuScreen extends StatelessWidget {
             ElevatedButton(
               onPressed: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Adicionaproduto()));
+                    MaterialPageRoute(builder: (context) => adicionaproduto()));
               },
               child: Text(
                 'Adicionar Produto',
@@ -64,7 +66,7 @@ class MenuScreen extends StatelessWidget {
             ElevatedButton(
               onPressed: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => consultaProduto()));
+                    MaterialPageRoute(builder: (context) => ConsultaProduto()));
               },
               child: Text(
                 'Consulta Produto',
