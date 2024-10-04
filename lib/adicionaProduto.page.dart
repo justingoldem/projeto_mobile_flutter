@@ -1,47 +1,64 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_mobile_flutter/apirequisicaoAdiciona.dart';
 import 'package:projeto_mobile_flutter/componentes/campoDecoracao.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-
-void main() {
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-  )
-  );
-}
-
-class adicionaproduto extends StatefulWidget {
+class AdicionaProduto extends StatefulWidget {
   @override
-  _adicionaState createState() => _adicionaState();
+  _AdicionaState createState() => _AdicionaState();
 }
 
-class _adicionaState extends State<adicionaproduto> {
+class _AdicionaState extends State<AdicionaProduto> {
+  final apiServiceAdiciona apiService = apiServiceAdiciona();
   final TextEditingController _nomeProdutoController = TextEditingController();
   final TextEditingController _quantidadeController = TextEditingController();
+  final TextEditingController _idController = TextEditingController();
 
-  void _AdicionarProduto() {
+  Future<void> _adicionarProduto() async {
     String nomeProduto = _nomeProdutoController.text;
-    String quantidade = _quantidadeController.text;
+    String quantidadeStr = _quantidadeController.text;
+    String idCodigo = _idController.text;
 
-    if (nomeProduto == "Alface"  && quantidade == "10") {
-
-        ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Produto Enviado ao Estoque '),
-          backgroundColor: Colors.green[600],
-        ),
-      );
-    } else {
-      // produto com erro
+    if (nomeProduto.isEmpty || quantidadeStr.isEmpty || idCodigo.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Algun dado esta incorreto! '),
+          content: Text('Por favor, preencha todos os campos!'),
+          backgroundColor: Colors.red,
+        ),
+      );
+      return;
+    }
+
+    int quantidade = int.tryParse(quantidadeStr) ?? 0;
+
+    try {
+      final response = await apiService.adicionarProduto(
+          idCodigo, nomeProduto, quantidade);
+
+      if (response.statusCode == 200) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Produto adicionado com sucesso!'),
+            backgroundColor: Colors.green,
+          ),
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Erro: ${response.statusCode} - ${response.body}'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Erro ao adicionar produto: $e'),
           backgroundColor: Colors.red,
         ),
       );
     }
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -56,35 +73,33 @@ class _adicionaState extends State<adicionaproduto> {
               child: Image.asset("assets/logo.png"),
             ),
             Text(
-              'Adicionar produto',
-               style: GoogleFonts.playfairDisplay(
-                  fontSize: 25,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black
-                  ),
+              'Adicionar Produto',
+              style: GoogleFonts.playfairDisplay(
+                fontSize: 25,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
               ),
-              
-            
-            SizedBox(
-              height: 25,
             ),
+            SizedBox(height: 20),
+            TextFormField(
+              controller: _idController,
+              keyboardType: TextInputType.text,
+              autofocus: true,
+              decoration: getInputdecoration("Código"),
+            ),
+            SizedBox(height: 20),
             TextFormField(
               controller: _nomeProdutoController,
-              keyboardType: TextInputType.name,
-              autofocus: true,
-              decoration: getInputdecoration("Nome do Produto: "),
+              keyboardType: TextInputType.text,
+              decoration: getInputdecoration("Nome do Produto"),
             ),
-            SizedBox(
-              height: 15,
-            ),
+            SizedBox(height: 20),
             TextFormField(
               controller: _quantidadeController,
               keyboardType: TextInputType.number,
-              decoration: getInputdecoration("Quantidade: "),
+              decoration: getInputdecoration("Quantidade"),
             ),
-            SizedBox(
-              height: 40,
-            ),
+            SizedBox(height: 40),
             Container(
               height: 60,
               alignment: Alignment.centerLeft,
@@ -98,18 +113,16 @@ class _adicionaState extends State<adicionaproduto> {
                     Color.fromRGBO(0, 255, 0, 50),
                   ],
                 ),
-                borderRadius: BorderRadius.all(
-                  Radius.circular(5),
-                ),
+                borderRadius: BorderRadius.all(Radius.circular(5)),
               ),
               child: SizedBox.expand(
                 child: TextButton(
-                  onPressed: _AdicionarProduto ,
+                  onPressed: _adicionarProduto,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       Text(
-                        "Enviar Produto ",
+                        "Enviar Produto",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Colors.black,

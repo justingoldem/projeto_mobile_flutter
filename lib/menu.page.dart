@@ -52,7 +52,7 @@ class MenuScreen extends StatelessWidget {
             ElevatedButton(
               onPressed: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => adicionaproduto()));
+                    MaterialPageRoute(builder: (context) => AdicionaProduto()));
               },
               child: Text(
                 'Adicionar Produto',

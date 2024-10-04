@@ -4,8 +4,7 @@ import 'package:projeto_mobile_flutter/menu.page.dart';
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-  )
-);
+  ));
 }
 
 class LoginPage extends StatefulWidget {
