@@ -40,21 +40,11 @@ class _ConsultaState extends State<ConsultaProduto> {
       if (produtoEncontrado != Null) {
         setState(() {
           _mostraDetalhes = true;
-          _nomeProduto = produtoEncontrado['nome'];
+          _nomeProduto = produtoEncontrado['Nome'];
           _categoriaProduto = produtoEncontrado['Categoria'];
-          _descricaoProduto = produtoEncontrado['Descrição'];
-          _precoProduto = produtoEncontrado['Preço'].toStringAsFixed(2);
+          _descricaoProduto = produtoEncontrado['Descricao'];
+          _precoProduto = produtoEncontrado['Preco'].toStringAsFixed(2);
           _quantidadeProduto = produtoEncontrado['qtd_kg'].toString();
-        });
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Produto Não está em Estoque'),
-            backgroundColor: Colors.red,
-          ),
-        );
-        setState(() {
-          _mostraDetalhes = false;
         });
       }
     } catch (e) {
@@ -65,7 +55,7 @@ class _ConsultaState extends State<ConsultaProduto> {
         ),
       );
       setState(() {
-        _mostraDetalhes = false;
+        _mostraDetalhes = true;
       });
     }
   }
@@ -93,8 +83,7 @@ class _ConsultaState extends State<ConsultaProduto> {
             SizedBox(height: 25),
             TextFormField(
               controller: _nomeProdutoController,
-              keyboardType: TextInputType.name,
-              autofocus: true,
+              keyboardType: TextInputType.text,
               decoration: getInputdecoration("Nome do Produto: "),
             ),
             SizedBox(height: 15),
@@ -138,11 +127,6 @@ class _ConsultaState extends State<ConsultaProduto> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(
-                    width: 70,
-                    height: 70,
-                    child: Image.asset("assets/entrar.png"),
-                  ),
                   Text(
                     _nomeProduto,
                     style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
@@ -154,12 +138,12 @@ class _ConsultaState extends State<ConsultaProduto> {
                   ),
                   SizedBox(height: 8),
                   Text(
-                    'Descrição: $_descricaoProduto',
+                    'preco: R\$ $_precoProduto',
                     style: TextStyle(fontSize: 18),
                   ),
                   SizedBox(height: 8),
                   Text(
-                    'Preço: R\$ $_precoProduto',
+                    'Descricao: $_descricaoProduto',
                     style: TextStyle(fontSize: 18),
                   ),
                   SizedBox(height: 8),
