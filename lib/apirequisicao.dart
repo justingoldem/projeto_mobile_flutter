@@ -6,7 +6,7 @@ class ApiService {
 
   Future<List<dynamic>> getProdutos() async {
     try {
-      final response = await http.get(Uri.parse('$baseUrl/produtos'));
+      final response = await http.get(Uri.parse('$baseUrl'));
 
       if (response.statusCode == 200) {
         var data = jsonDecode(response.body);
