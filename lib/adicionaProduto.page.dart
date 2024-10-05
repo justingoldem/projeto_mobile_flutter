@@ -7,19 +7,19 @@ class AdicionaProduto extends StatefulWidget {
   @override
   _AdicionaState createState() => _AdicionaState();
 }
-
+ 
 class _AdicionaState extends State<AdicionaProduto> {
   final apiServiceAdiciona apiService = apiServiceAdiciona();
   final TextEditingController _nomeProdutoController = TextEditingController();
   final TextEditingController _quantidadeController = TextEditingController();
-  final TextEditingController _idController = TextEditingController();
+   final TextEditingController _idController = TextEditingController();
 
   Future<void> _adicionarProduto() async {
     String nomeProduto = _nomeProdutoController.text;
     String quantidadeStr = _quantidadeController.text;
     String idCodigo = _idController.text;
 
-    if (nomeProduto.isEmpty || quantidadeStr.isEmpty || idCodigo.isEmpty) {
+    if (nomeProduto.isEmpty || quantidadeStr.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('Por favor, preencha todos os campos!'),
@@ -73,31 +73,30 @@ class _AdicionaState extends State<AdicionaProduto> {
               child: Image.asset("assets/logo.png"),
             ),
             Text(
-              'Adicionar Produto',
+              'Adicionar Produto:',
               style: GoogleFonts.playfairDisplay(
                 fontSize: 25,
                 fontWeight: FontWeight.bold,
                 color: Colors.black,
               ),
             ),
-            SizedBox(height: 20),
+             SizedBox(height: 20),
             TextFormField(
               controller: _idController,
               keyboardType: TextInputType.text,
-              autofocus: true,
-              decoration: getInputdecoration("Código"),
+              decoration: getInputdecoration("Codigo: "),
             ),
             SizedBox(height: 20),
             TextFormField(
               controller: _nomeProdutoController,
               keyboardType: TextInputType.text,
-              decoration: getInputdecoration("Nome do Produto"),
+              decoration: getInputdecoration("Nome do Produto "),
             ),
             SizedBox(height: 20),
             TextFormField(
               controller: _quantidadeController,
               keyboardType: TextInputType.number,
-              decoration: getInputdecoration("Quantidade"),
+              decoration: getInputdecoration("Quantidade: "),
             ),
             SizedBox(height: 40),
             Container(

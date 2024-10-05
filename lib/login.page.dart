@@ -85,14 +85,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
               style: TextStyle(fontSize: 20),
             ),
-            Container(
-              height: 40,
-              alignment: Alignment.centerRight,
-              child: TextButton(
-                onPressed: () {},
-                child: Text("Recuperar Senha", selectionColor: Colors.black),
-              ),
-            ),
+           
             SizedBox(
               height: 40,
             ),

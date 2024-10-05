@@ -77,17 +77,7 @@ class MenuScreen extends StatelessWidget {
             SizedBox(
               height: 25,
             ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => removeProduto()));
-              },
-              child: Text(
-                'Remove Produto',
-                style:
-                    TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
-              ),
-            ),
+          
             SizedBox(
               height: 25,
             ),
