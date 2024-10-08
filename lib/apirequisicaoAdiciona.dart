@@ -10,7 +10,6 @@ class apiServiceAdiciona {
     final String apiUrll = '${baseUrll}${id}/adicionar-estoque';
 
     Map<String, dynamic> data = {
-      
       'nome': nome,
       'quantidade': quantidade,
     };
