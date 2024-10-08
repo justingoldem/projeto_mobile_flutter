@@ -21,6 +21,7 @@ class _ConsultaState extends State<ConsultaProduto> {
   String _descricaoProduto = "";
   String _precoProduto = "";
   String _quantidadeProduto = "";
+  String _imagemProduto = "";
 
   @override
   void initState() {
@@ -45,6 +46,7 @@ class _ConsultaState extends State<ConsultaProduto> {
           _descricaoProduto = produtoEncontrado['Descricao'];
           _precoProduto = produtoEncontrado['Preco'].toStringAsFixed(2);
           _quantidadeProduto = produtoEncontrado['qtd_kg'].toString();
+          _imagemProduto = produtoEncontrado['Imagem'];
         });
       }
     } catch (e) {
@@ -132,6 +134,15 @@ class _ConsultaState extends State<ConsultaProduto> {
                     style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(height: 8),
+                  if (_imagemProduto.isNotEmpty)
+  Image.network(
+    _imagemProduto,
+    height: 150, // Altura da imagem
+    width: 150,  // Largura da imagem
+    errorBuilder: (context, error, stackTrace) {
+      return Text('Imagem não disponível'); // Exibir caso a imagem não seja carregada
+    },
+  ),
                   Text(
                     'Categoria: $_categoriaProduto',
                     style: TextStyle(fontSize: 18),
