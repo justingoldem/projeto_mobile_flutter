@@ -49,49 +49,76 @@ class MenuScreen extends StatelessWidget {
             SizedBox(
               height: 20,
             ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => AdicionaProduto()));
-              },
-              child: Text(
-                'Adicionar Produto',
-                style:
-                    TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
-              ),
-            ),
-            SizedBox(
-              height: 25,
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => ConsultaProduto()));
-              },
-              child: Text(
-                'Consulta Produto',
-                style:
-                    TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
-              ),
-            ),
-            SizedBox(
-              height: 25,
-            ),
-          
-            SizedBox(
-              height: 25,
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => LoginPage()));
-              },
-              child: Text(
-                'Logout',
-                style:
-                    TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
-              ),
-            ),
+           Container(
+  decoration: BoxDecoration(
+    gradient: LinearGradient(
+      colors: [Color.fromRGBO(0, 100, 1, 50),
+               Color.fromRGBO(0, 255, 0, 50),], // Cores do gradiente
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight,
+    ),
+    borderRadius: BorderRadius.circular(12), // Bordas arredondadas
+  ),
+  child: ElevatedButton(
+    style: ElevatedButton.styleFrom(
+      padding: EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+      backgroundColor: Colors.transparent, // Importante: Deixe a cor de fundo transparente
+      shadowColor: Colors.transparent, // Remove a sombra para exibir o gradiente limpo
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
+    ),
+    onPressed: () {
+      Navigator.push(
+        context, 
+        MaterialPageRoute(builder: (context) => AdicionaProduto()),
+      );
+    },
+    child: Text(
+      'Adicionar Produto',
+      style: TextStyle(
+        fontWeight: FontWeight.bold,
+        color: Colors.black, // Cor do texto
+      ),
+    ),
+  ),
+),
+SizedBox(height: 25),
+Container(
+  decoration: BoxDecoration(
+    gradient: LinearGradient(
+      colors: [Color.fromRGBO(0, 100, 1, 50),
+               Color.fromRGBO(0, 255, 0, 50),], // Cores do gradiente
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight,
+    ),
+  
+    borderRadius: BorderRadius.circular(12), // Bordas arredondadas
+  ),
+  child: ElevatedButton(
+    style: ElevatedButton.styleFrom(
+      padding: EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+      backgroundColor: Colors.transparent, // Importante: Deixe a cor de fundo transparente
+      shadowColor: Colors.transparent, // Remove a sombra para exibir o gradiente limpo
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
+    ),
+    onPressed: () {
+      Navigator.push(
+        context, 
+        MaterialPageRoute(builder: (context) => ConsultaProduto()),
+      );
+    },
+    child: Text(
+    'Consulta Produto',
+   style: TextStyle(
+        fontWeight: FontWeight.bold,
+        color: Colors.black,
+  ),
+),
+),
+),
           ],
         ),
       ),

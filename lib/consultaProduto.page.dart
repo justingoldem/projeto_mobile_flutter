@@ -62,11 +62,10 @@ class _ConsultaState extends State<ConsultaProduto> {
     }
   }
 
-  @override
+   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-      ),
+      appBar: AppBar(),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
@@ -83,87 +82,131 @@ class _ConsultaState extends State<ConsultaProduto> {
                   color: Colors.black),
             ),
             SizedBox(height: 25),
-            TextFormField(
-              controller: _nomeProdutoController,
-              keyboardType: TextInputType.text,
-              decoration: getInputdecoration("Nome do Produto: "),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.0), // Espaçamento lateral
+              child: TextFormField(
+                controller: _nomeProdutoController,
+                keyboardType: TextInputType.text,
+                decoration: getInputdecoration("Nome do Produto "),
+              ),
             ),
             SizedBox(height: 15),
-            Container(
-              height: 60,
-              alignment: Alignment.centerLeft,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  stops: [0.3, 1],
-                  colors: [
-                    Color.fromRGBO(0, 100, 1, 50),
-                    Color.fromRGBO(0, 255, 0, 50),
-                  ],
-                ),
-                borderRadius: BorderRadius.all(Radius.circular(5)),
-              ),
-              child: SizedBox.expand(
-                child: TextButton(
-                  onPressed: _consultaProduto,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Text(
-                        "Consultar Produto",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                          fontSize: 20,
-                        ),
-                        textAlign: TextAlign.left,
-                      ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.0), // Espaçamento lateral
+              child: Container(
+                height: 60,
+                alignment: Alignment.centerLeft,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    stops: [0.3, 1],
+                    colors: [
+                      Color.fromRGBO(0, 100, 1, 50),
+                      Color.fromRGBO(0, 255, 0, 50),
                     ],
+                  ),
+                  borderRadius: BorderRadius.all(Radius.circular(12)),
+                ),
+                child: SizedBox.expand(
+                  child: TextButton(
+                    onPressed: _consultaProduto,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Text(
+                          "Consultar Produto",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                            fontSize: 20,
+                          ),
+                          textAlign: TextAlign.left,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
             ),
             SizedBox(height: 50),
             if (_mostraDetalhes)
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    _nomeProduto,
-                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 24), // Espaçamento nas laterais e na parte superior/inferior
+                child: Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Colors.green, // Cor da borda verde
+                      width: 2, // Largura da borda
+                    ),
+                    borderRadius: BorderRadius.circular(12), // Bordas arredondadas
                   ),
-                  SizedBox(height: 8),
-                  if (_imagemProduto.isNotEmpty)
-  Image.network(
-    _imagemProduto,
-    height: 150, // Altura da imagem
-    width: 150,  // Largura da imagem
-    errorBuilder: (context, error, stackTrace) {
-      return Text('Imagem não disponível'); // Exibir caso a imagem não seja carregada
-    },
-  ),
-                  Text(
-                    'Categoria: $_categoriaProduto',
-                    style: TextStyle(fontSize: 18),
+                  padding: EdgeInsets.all(16), // Espaçamento interno do Container
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Center(
+                        child: Text(
+                          _nomeProduto,
+                          style: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black, // Fonte preta
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      SizedBox(height: 16),
+                      if (_imagemProduto.isNotEmpty)
+                        Center(
+                          child: Image.network(
+                            _imagemProduto,
+                            height: 300,
+                            width: 300,
+                            fit: BoxFit.cover,
+                            errorBuilder: (context, error, stackTrace) {
+                              return Text('Imagem não disponível');
+                            },
+                          ),
+                        ),
+                      SizedBox(height: 16),
+                      Text(
+                        'Categoria: $_categoriaProduto',
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: const Color.fromARGB(255, 5, 233, 32), // Fonte preta
+                        ),
+                      ),
+                      SizedBox(height: 8),
+                      Text(
+                        'Preço: R\$ $_precoProduto',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.black, // Fonte preta
+                        ),
+                      ),
+                      SizedBox(height: 8),
+                      Text(
+                        'Descrição: $_descricaoProduto',
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.black, // Fonte preta
+                        ),
+                      ),
+                      SizedBox(height: 8),
+                      Text(
+                        'Quantidade: $_quantidadeProduto kg',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.black, // Fonte preta
+                        ),
+                      ),
+                    ],
                   ),
-                  SizedBox(height: 8),
-                  Text(
-                    'preco: R\$ $_precoProduto',
-                    style: TextStyle(fontSize: 18),
-                  ),
-                  SizedBox(height: 8),
-                  Text(
-                    'Descricao: $_descricaoProduto',
-                    style: TextStyle(fontSize: 18),
-                  ),
-                  SizedBox(height: 8),
-                  Text(
-                    'Quantidade: $_quantidadeProduto kg',
-                    style: TextStyle(fontSize: 18),
-                  ),
-                ],
-              ),
+                ),
+              )
           ],
         ),
       ),
