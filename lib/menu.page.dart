@@ -1,26 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:projeto_mobile_flutter/adicionaProduto.page.dart';
-import 'package:projeto_mobile_flutter/consultaProduto.page.dart';
-import 'package:projeto_mobile_flutter/login.page.dart';
-import 'package:projeto_mobile_flutter/removeProduto.page.dart';
+import 'package:projeto_mobile_flutter/adicionaProduto.page.dart';  // Importa a página de adicionar produto
+import 'package:projeto_mobile_flutter/consultaProduto.page.dart'; // Importa a página de consulta de produto
+import 'package:projeto_mobile_flutter/login.page.dart'; // Importa a página de login
+
 
 void main() {
-  runApp(MenuPage());
+  runApp(MenuPage()); // Define que a tela inicial será a MenuPage
 }
-
-
-
+// MenuPage é um widget sem estado (StatelessWidget)
 class MenuPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: MenuScreen(),
+      home: MenuScreen(),  // Define a MenuScreen como a tela principal
       debugShowCheckedModeBanner: false,
     );
   }
 }
-
+// MenuScreen define a tela de menu com várias opções
 class MenuScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -28,19 +26,19 @@ class MenuScreen extends StatelessWidget {
       appBar: AppBar(),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,  // Centraliza os widgets verticalmente
           children: <Widget>[
             SizedBox(
-              width: 200,
-              height: 200,
-              child: Image.asset("assets/logo.png"),
+              width: 200, // Largura da logo
+              height: 200, // Altura da logo
+              child: Image.asset("assets/logo.png"), // Exibe uma imagem localizada em "assets"
             ),
-            SizedBox(
+            SizedBox( // Espaçamento vertical
               height: 20,
             ),
             Text(
-              'Menu',
-              style: GoogleFonts.playfairDisplay(
+              'Menu',  // Título da página
+              style: GoogleFonts.playfairDisplay( // Usa a fonte Playfair Display do Google Fonts
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
                 color: Colors.black,
@@ -49,13 +47,14 @@ class MenuScreen extends StatelessWidget {
             SizedBox(
               height: 20,
             ),
+              // Botão para adicionar produto
             ElevatedButton(
-              onPressed: () {
+              onPressed: () {  // Ao pressionar, navega para a tela de AdicionaProduto
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => AdicionaProduto()));
               },
               child: Text(
-                'Adicionar Produto',
+                'Adicionar Produto', // Texto do botão
                 style:
                     TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
               ),
@@ -63,13 +62,14 @@ class MenuScreen extends StatelessWidget {
             SizedBox(
               height: 25,
             ),
+              // Botão para consultar produto
             ElevatedButton(
-              onPressed: () {
+              onPressed: () { // Ao pressionar, navega para a tela de ConsultaProduto
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => ConsultaProduto()));
               },
               child: Text(
-                'Consulta Produto',
+                'Consulta Produto', // Texto do botão
                 style:
                     TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
               ),
@@ -77,17 +77,17 @@ class MenuScreen extends StatelessWidget {
             SizedBox(
               height: 25,
             ),
-          
             SizedBox(
               height: 25,
             ),
+              // Botão para fazer logout e voltar para a tela de login
             ElevatedButton(
-              onPressed: () {
+              onPressed: () { // Ao pressionar, navega para a tela de LoginPage
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => LoginPage()));
               },
               child: Text(
-                'Logout',
+                'Logout', // Texto do botão
                 style:
                     TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
               ),
