@@ -47,14 +47,13 @@ class MenuScreen extends StatelessWidget {
             SizedBox(
               height: 20,
             ),
-              // Botão para adicionar produto
             ElevatedButton(
-              onPressed: () {  // Ao pressionar, navega para a tela de AdicionaProduto
+              onPressed: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => AdicionaProduto()));
               },
               child: Text(
-                'Adicionar Produto', // Texto do botão
+                'Adicionar Produto',
                 style:
                     TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
               ),
@@ -62,14 +61,13 @@ class MenuScreen extends StatelessWidget {
             SizedBox(
               height: 25,
             ),
-              // Botão para consultar produto
             ElevatedButton(
-              onPressed: () { // Ao pressionar, navega para a tela de ConsultaProduto
+              onPressed: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => ConsultaProduto()));
               },
               child: Text(
-                'Consulta Produto', // Texto do botão
+                'Consulta Produto',
                 style:
                     TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
               ),
@@ -77,17 +75,17 @@ class MenuScreen extends StatelessWidget {
             SizedBox(
               height: 25,
             ),
+          
             SizedBox(
               height: 25,
             ),
-              // Botão para fazer logout e voltar para a tela de login
             ElevatedButton(
-              onPressed: () { // Ao pressionar, navega para a tela de LoginPage
+              onPressed: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => LoginPage()));
               },
               child: Text(
-                'Logout', // Texto do botão
+                'Logout',
                 style:
                     TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
               ),

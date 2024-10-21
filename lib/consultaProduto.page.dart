@@ -70,9 +70,9 @@ class _ConsultaState extends State<ConsultaProduto> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar( // Barra de navegação no topo
+      appBar: AppBar(
       ),
-      body: SingleChildScrollView( // Permite que o conteúdo role
+      body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
             SizedBox(
@@ -87,43 +87,42 @@ class _ConsultaState extends State<ConsultaProduto> {
                   fontWeight: FontWeight.bold,
                   color: Colors.black),
             ),
-            SizedBox(height: 25), // Espaçamento vertical
+            SizedBox(height: 25),
             TextFormField(
               controller: _nomeProdutoController,
               keyboardType: TextInputType.text,
-              decoration: getInputdecoration("Nome do Produto: "),  // Estilo de campo
+              decoration: getInputdecoration("Nome do Produto: "),
             ),
             SizedBox(height: 15),
-             // Botão de consulta
             Container(
               height: 60,
               alignment: Alignment.centerLeft,
               decoration: BoxDecoration(
-                gradient: LinearGradient( // Gradiente do botão
-                  begin: Alignment.topLeft, //Gradiente começa no topo esquerdo 
-                  end: Alignment.bottomRight,// e termina no lado direito 
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
                   stops: [0.3, 1],
                   colors: [
-                    Color.fromRGBO(0, 100, 1, 50), 
+                    Color.fromRGBO(0, 100, 1, 50),
                     Color.fromRGBO(0, 255, 0, 50),
                   ],
                 ),
-                borderRadius: BorderRadius.all(Radius.circular(5)), // bodas arendondadas no botao 
+                borderRadius: BorderRadius.all(Radius.circular(5)),
               ),
               child: SizedBox.expand(
                 child: TextButton(
-                  onPressed: _consultaProduto, // Chama a função de consulta ao pressionar o botão
+                  onPressed: _consultaProduto,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       Text(
-                        "Consultar Produto",  // Texto do botão
+                        "Consultar Produto",
                         style: TextStyle(
-                          fontWeight: FontWeight.bold, //fonte em negrito 
-                          color: Colors.black, // corda fonte 
-                          fontSize: 20, // tamanho da fonte 
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                          fontSize: 20,
                         ),
-                        textAlign: TextAlign.left, //alinhamento com a coluna a esquerda 
+                        textAlign: TextAlign.left,
                       ),
                     ],
                   ),
@@ -136,13 +135,11 @@ class _ConsultaState extends State<ConsultaProduto> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                   // Nome do produto
                   Text(
                     _nomeProduto,
                     style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(height: 8),
-                  // Exibe a imagem se o URL estiver disponível
                   if (_imagemProduto.isNotEmpty)
   Image.network(
     _imagemProduto,
@@ -152,25 +149,21 @@ class _ConsultaState extends State<ConsultaProduto> {
       return Text('Imagem não disponível'); // Exibir caso a imagem não seja carregada
     },
   ),
-                  // Categoria do produto
                   Text(
                     'Categoria: $_categoriaProduto',
                     style: TextStyle(fontSize: 18),
                   ),
                   SizedBox(height: 8),
-                   // Preço do produto
                   Text(
                     'preco: R\$ $_precoProduto',
                     style: TextStyle(fontSize: 18),
                   ),
                   SizedBox(height: 8),
-                   // Descrição do produto
                   Text(
                     'Descricao: $_descricaoProduto',
                     style: TextStyle(fontSize: 18),
                   ),
                   SizedBox(height: 8),
-                  // Quantidade disponível do produto
                   Text(
                     'Quantidade: $_quantidadeProduto kg',
                     style: TextStyle(fontSize: 18),
