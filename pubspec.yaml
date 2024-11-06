@@ -69,7 +69,8 @@ flutter:
   - assets/email.png
   - assets/senha.png
   - assets/entrar.png
-  
+  - assets/logo4.png
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
 
