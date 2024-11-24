@@ -4,14 +4,13 @@ import 'package:flutter/material.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Mobile Green Life',
-      debugShowCheckedModeBanner:false,
-      theme: ThemeData(primarySwatch: Colors.green),
-      home: LoginPage(),
+      title: 'Mobile Green Life', // Título da aplicação
+      debugShowCheckedModeBanner: false, // Desativa o banner de debug
+      theme: ThemeData(primarySwatch: Colors.green), // Define o tema principal
+      home: LoginPage(), // Define a página inicial
     );
   }
 }

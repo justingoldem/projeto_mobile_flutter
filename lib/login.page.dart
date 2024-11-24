@@ -1,26 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_mobile_flutter/menu.page.dart';
 
+// Função principal que inicia o aplicativo e oculta a banner de debug
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
   ));
 }
 
+// Declaração da página de login como um StatefulWidget para possibilitar o uso de estado
 class LoginPage extends StatefulWidget {
   @override
   _LoginPageState createState() => _LoginPageState();
 }
 
+// Estado da página de login
 class _LoginPageState extends State<LoginPage> {
+  // Controladores para capturar o texto inserido nos campos de e-mail e senha
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
+  // Função para processar o login
   void _login() {
     String email = _emailController.text;
     String password = _passwordController.text;
 
+    // Verifica as credenciais de login
     if (email == "Admin" && password == "12345") {
+      // Navega para a página de menu caso as credenciais estejam corretas
       Navigator.push(
         context,
         MaterialPageRoute(
@@ -28,7 +35,7 @@ class _LoginPageState extends State<LoginPage> {
         ),
       );
     } else {
-      // Login falhou
+      // Mostra uma mensagem de erro caso o login falhe
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('Usuário ou senha incorretos!'),
@@ -46,14 +53,15 @@ class _LoginPageState extends State<LoginPage> {
         color: Colors.white,
         child: ListView(
           children: <Widget>[
+            // Exibe o logo no topo
             SizedBox(
               width: 200,
               height: 200,
               child: Image.asset('assets/logo4.png'),
             ),
-            SizedBox(
-              height: 20,
-            ),
+            SizedBox(height: 20),
+            
+            // Campo de e-mail
             TextFormField(
               controller: _emailController,
               keyboardType: TextInputType.emailAddress,
@@ -68,13 +76,13 @@ class _LoginPageState extends State<LoginPage> {
               ),
               style: TextStyle(fontSize: 20),
             ),
-            SizedBox(
-              height: 10,
-            ),
+            SizedBox(height: 10),
+            
+            // Campo de senha
             TextFormField(
               controller: _passwordController,
               keyboardType: TextInputType.text,
-              obscureText: true,
+              obscureText: true, // Oculta a senha
               decoration: InputDecoration(
                 labelText: "Senha",
                 labelStyle: TextStyle(
@@ -85,10 +93,9 @@ class _LoginPageState extends State<LoginPage> {
               ),
               style: TextStyle(fontSize: 20),
             ),
-           
-            SizedBox(
-              height: 40,
-            ),
+            SizedBox(height: 40),
+            
+            // Botão de Login com gradiente
             Container(
               height: 60,
               alignment: Alignment.centerLeft,
@@ -102,9 +109,7 @@ class _LoginPageState extends State<LoginPage> {
                     Color.fromRGBO(0, 255, 0, 50),
                   ],
                 ),
-                borderRadius: BorderRadius.all(
-                  Radius.circular(5),
-                ),
+                borderRadius: BorderRadius.all(Radius.circular(5)),
               ),
               child: SizedBox.expand(
                 child: TextButton(
