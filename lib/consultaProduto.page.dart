@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_mobile_flutter/apirequisicao.dart';  // Importa a classe de requisição de API personalizada
-import 'package:projeto_mobile_flutter/componentes/campoDecoracao.dart'; // Importa o estilo de decoração para os campos de entrada
-import 'package:google_fonts/google_fonts.dart'; // Importa o pacote para usar fontes personalizadas do Google
+import 'package:projeto_mobile_flutter/apirequisicao.dart';
+import 'package:projeto_mobile_flutter/componentes/campoDecoracao.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 // Função principal que inicia o app
 void main() {
@@ -38,7 +38,6 @@ class _ConsultaState extends State<ConsultaProduto> {
     try {
       // Obtém a lista de produtos usando a API e filtra pelo nome
       var produtos = await apiService.getProdutos();
-        // Procura o produto na lista pelo nome (case insensitive)
       var produtoEncontrado = produtos.firstWhere(
         (produto) => produto['Nome'].toLowerCase() == nomeProduto,
         orElse: () => Null,
@@ -47,7 +46,7 @@ class _ConsultaState extends State<ConsultaProduto> {
       // Se o produto foi encontrado, atualiza os detalhes no estado
       if (produtoEncontrado != Null) {
         setState(() {
-          _mostraDetalhes = true; // Habilita a exibição dos detalhes
+          _mostraDetalhes = true;
           _nomeProduto = produtoEncontrado['Nome'];
           _categoriaProduto = produtoEncontrado['Categoria'];
           _descricaoProduto = produtoEncontrado['Descricao'];
@@ -74,8 +73,7 @@ class _ConsultaState extends State<ConsultaProduto> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-      ),
+      appBar: AppBar(),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
@@ -87,9 +85,9 @@ class _ConsultaState extends State<ConsultaProduto> {
             ),
             // Título da tela
             Text(
-              'Consulta Produto',  // Título da tela
-              style: GoogleFonts.playfairDisplay(  // Fonte personalizada
-                  fontSize: 25, 
+              'Consulta Produto',
+              style: GoogleFonts.playfairDisplay(
+                  fontSize: 25,
                   fontWeight: FontWeight.bold,
                   color: Colors.black),
             ),
@@ -122,24 +120,23 @@ class _ConsultaState extends State<ConsultaProduto> {
                   ),
                   borderRadius: BorderRadius.all(Radius.circular(12)),
                 ),
-                borderRadius: BorderRadius.all(Radius.circular(5)),
-              ),
-              child: SizedBox.expand(
-                child: TextButton(
-                  onPressed: _consultaProduto,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Text(
-                        "Consultar Produto",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                          fontSize: 20,
+                child: SizedBox.expand(
+                  child: TextButton(
+                    onPressed: _consultaProduto,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Text(
+                          "Consultar Produto",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                            fontSize: 20,
+                          ),
+                          textAlign: TextAlign.left,
                         ),
-                        textAlign: TextAlign.left,
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
