@@ -21,7 +21,7 @@ class apiServiceAdiciona {
     try {
       // Faz uma requisição POST para a API com cabeçalhos e corpo da requisição
       final response = await http.post(
-        Uri.parse(apiUrll),
+        Uri.parse(apiUrll),  // Converte a URL para o formato URI
         headers: {
           'Content-Type': 'application/json', // Define o tipo de conteúdo como JSON
         },

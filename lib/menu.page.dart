@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:projeto_mobile_flutter/adicionaProduto.page.dart';
-import 'package:projeto_mobile_flutter/consultaProduto.page.dart';
-import 'package:projeto_mobile_flutter/login.page.dart';
-import 'package:projeto_mobile_flutter/removeProduto.page.dart';
+import 'package:projeto_mobile_flutter/adicionaProduto.page.dart';  // Importa a página de adicionar produto
+import 'package:projeto_mobile_flutter/consultaProduto.page.dart'; // Importa a página de consulta de produto
+import 'package:projeto_mobile_flutter/login.page.dart'; // Importa a página de login
+
 
 // Classe MenuPage que é responsável por iniciar a tela principal do menu
 class MenuPage extends StatelessWidget {
@@ -26,7 +26,7 @@ class MenuScreen extends StatelessWidget {
       appBar: AppBar(),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,  // Centraliza os widgets verticalmente
           children: <Widget>[
             // Exibe o logo da aplicação
             SizedBox(
@@ -38,8 +38,8 @@ class MenuScreen extends StatelessWidget {
             
             // Título do Menu
             Text(
-              'Menu',
-              style: GoogleFonts.playfairDisplay(
+              'Menu',  // Título da página
+              style: GoogleFonts.playfairDisplay( // Usa a fonte Playfair Display do Google Fonts
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
                 color: Colors.black,

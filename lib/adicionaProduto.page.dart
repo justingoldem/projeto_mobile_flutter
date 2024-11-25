@@ -92,7 +92,7 @@ class _AdicionaState extends State<AdicionaProduto> {
             // Texto de título
             Text(
               'Adicionar Produto:',
-              style: GoogleFonts.playfairDisplay(
+              style: GoogleFonts.playfairDisplay( //fonte do google teve adicionar uma biblioteca para usar a fonte playfairdisplay
                 fontSize: 25,
                 fontWeight: FontWeight.bold,
                 color: Colors.black,

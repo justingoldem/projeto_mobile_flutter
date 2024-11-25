@@ -1,5 +1,5 @@
-import 'dart:convert';
-import 'package:http/http.dart' as http;
+import 'dart:convert'; // Importa a biblioteca para converter JSON
+import 'package:http/http.dart' as http; // Importa a biblioteca HTTP para fazer requisições
 
 // Define a classe ApiService que será responsável por gerenciar as requisições de API
 class ApiService {

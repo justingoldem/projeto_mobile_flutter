@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_mobile_flutter/menu.page.dart';
+import 'package:projeto_mobile_flutter/menu.page.dart'; // Importa a página de menu que será acessada após o login
 
 // Função principal que inicia o aplicativo e oculta a banner de debug
 void main() {
@@ -22,8 +22,8 @@ class _LoginPageState extends State<LoginPage> {
 
   // Função para processar o login
   void _login() {
-    String email = _emailController.text;
-    String password = _passwordController.text;
+    String email = _emailController.text; // Captura o texto do campo de e-mail
+    String password = _passwordController.text; // Captura o texto do campo de e-mail
 
     // Verifica as credenciais de login
     if (email == "Admin" && password == "12345") {
@@ -31,27 +31,28 @@ class _LoginPageState extends State<LoginPage> {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => MenuPage(),
+          builder: (context) => MenuPage(), // Direciona para a página MenuPage
         ),
       );
     } else {
       // Mostra uma mensagem de erro caso o login falhe
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Usuário ou senha incorretos!'),
-          backgroundColor: Colors.red,
+          content: Text('Usuário ou senha incorretos!'), // Mensagem de erro
+          backgroundColor: Colors.red, // Cor de fundo do aviso
         ),
       );
     }
   }
-
+  // Método que constrói a interface da página de login
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+       // Corpo da interface com um container centralizado
       body: Container(
-        padding: EdgeInsets.only(top: 60, left: 40, right: 40),
-        color: Colors.white,
-        child: ListView(
+        padding: EdgeInsets.only(top: 60, left: 40, right: 40), // Define padding
+        color: Colors.white,  // Define a cor de fundo branca
+        child: ListView(   // Usa ListView para permitir rolagem da tela
           children: <Widget>[
             // Exibe o logo no topo
             SizedBox(
@@ -63,18 +64,18 @@ class _LoginPageState extends State<LoginPage> {
             
             // Campo de e-mail
             TextFormField(
-              controller: _emailController,
-              keyboardType: TextInputType.emailAddress,
-              autofocus: true,
+              controller: _emailController, // Controlador para o campo de e-mail
+              keyboardType: TextInputType.emailAddress, // Define o tipo de teclado
+              autofocus: true, // Define o foco inicial no campo de e-mail
               decoration: InputDecoration(
-                labelText: "E-mail",
+                labelText: "E-mail:", // Label para o campo de e-mail
                 labelStyle: TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.w400,
                   fontSize: 20,
                 ),
               ),
-              style: TextStyle(fontSize: 20),
+              style: TextStyle(fontSize: 20), // Define o estilo do texto no campo
             ),
             SizedBox(height: 10),
             
@@ -84,7 +85,7 @@ class _LoginPageState extends State<LoginPage> {
               keyboardType: TextInputType.text,
               obscureText: true, // Oculta a senha
               decoration: InputDecoration(
-                labelText: "Senha",
+                labelText: "Senha:", // Label para o campo de senha
                 labelStyle: TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.w400,
@@ -100,10 +101,10 @@ class _LoginPageState extends State<LoginPage> {
               height: 60,
               alignment: Alignment.centerLeft,
               decoration: BoxDecoration(
-                gradient: LinearGradient(
+                gradient: LinearGradient(  // Gradiente aplicado ao fundo do botão
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
-                  stops: [0.3, 1],
+                  stops: [0.3, 1], // Posição dos pontos de cor no gradiente
                   colors: [
                     Color.fromRGBO(0, 100, 1, 50),
                     Color.fromRGBO(0, 255, 0, 50),
@@ -113,10 +114,11 @@ class _LoginPageState extends State<LoginPage> {
               ),
               child: SizedBox.expand(
                 child: TextButton(
-                  onPressed: _login,
+                  onPressed: _login, // Chama a função de login ao pressionar o botão
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
+                      // Texto "Login" no botão
                       Text(
                         "Login",
                         style: TextStyle(
@@ -126,8 +128,9 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         textAlign: TextAlign.left,
                       ),
+                       // Ícone de "entrar" ao lado do texto
                       Container(
-                        child: Image.asset("assets/entrar.png"),
+                        child: Image.asset("assets/entrar.png"), // Imagem de ícone para o botão
                         height: 28,
                         width: 28,
                       ),
