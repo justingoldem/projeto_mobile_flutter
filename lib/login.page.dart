@@ -68,7 +68,7 @@ class _LoginPageState extends State<LoginPage> {
               keyboardType: TextInputType.emailAddress, // Define o tipo de teclado
               autofocus: true, // Define o foco inicial no campo de e-mail
               decoration: InputDecoration(
-                labelText: "E-mail:", // Label para o campo de e-mail
+                labelText: "Usuario:", // Label para o campo de usuario
                 labelStyle: TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.w400,

@@ -117,7 +117,7 @@ class _AdicionaState extends State<AdicionaProduto> {
               child: TextFormField(
                 controller: _nomeProdutoController,
                 keyboardType: TextInputType.text,
-                decoration: getInputdecoration("Nome do Produto "),
+                decoration: getInputdecoration("Nome do Produto: "),
               ),
             ),
             SizedBox(height: 20),

@@ -98,7 +98,7 @@ class _ConsultaState extends State<ConsultaProduto> {
               child: TextFormField(
                 controller: _nomeProdutoController,
                 keyboardType: TextInputType.text,
-                decoration: getInputdecoration("Nome do Produto "),
+                decoration: getInputdecoration("Nome do Produto: "),
               ),
             ),
             SizedBox(height: 15),
